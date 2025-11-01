@@ -1,0 +1,384 @@
+/* ======== Google Fonts の読み込み ======== */
+/* ======== Google Fonts の読み込み ======== */
+/* Zen Kaku Gothic New から DotGothic16 に変更 */
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&display=swap');
+
+/* ======== 基本設定 ======== */
+:root {
+    /* PDF から色を抽出 */
+    --color-accent-yellow: #cccc99; /* 黄緑色 (仮) */
+    /* PDF から色を抽出 */
+    --color-accent-blue: #4a4a80; /* 青紫色 (仮) */
+    --color-dark-bg: #111;
+    --color-light-text: #eee;
+    --color-dark-text: #222;
+}
+
+/* ページ全体の初期設定 */
+body {
+    margin: 0;
+    padding: 0;
+    /* Zen Kaku Gothic New を基本フォントに設定 */
+    font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--color-dark-bg);
+    color: var(--color-light-text);
+    line-height: 1.6;
+}
+
+/* 中央寄せ用のコンテナ */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* セクション共通の余白 */
+.section {
+    padding: 60px 0;
+}
+
+/* セクションタイトルのスタイル (DISCOGRAPHY, LIVE, BIO) */
+.section-title {
+    /* Dela Gothic One に変更 */
+    font-family: 'Dela Gothic One', sans-serif; 
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* リンクの基本スタイル */
+a {
+    color: var(--color-light-text);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--color-accent-yellow);
+}
+
+/* ======== ヘッダー (ナビゲーション) ======== */
+.header {
+    background-color: var(--color-dark-bg);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* index.htmlから.containerクラスを削除した前提でスタイルを再定義 */
+.header-container {
+    /* ▼ 修正点: 幅を100%にし、左右のパディングで要素を端から離す */
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    display: flex;
+    justify-content: space-between; /* ロゴとメニューを左右に広げる */
+    align-items: center;
+    position: relative; 
+}
+
+.logo {
+    /* ロゴは左端に配置 */
+    flex-grow: 0; 
+    padding-left: 0; 
+}
+
+.logo a {
+    /* Zen Kaku Gothic New (900) を適用 */
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 2000; /* 太字を強調 */
+    text-decoration: none;
+}
+
+/* ======================================= */
+/* ハンバーガーメニューのスタイル */
+/* ======================================= */
+
+.hamburger-menu {
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1010; 
+    /* 右端に配置される */
+    padding-right: 0;
+}
+
+.bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-light-text);
+    transition: all 0.3s ease-in-out;
+}
+
+/* アイコンが active (開いている)状態の変形 */
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0; 
+}
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); 
+}
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); 
+}
+
+
+/* ======================================= */
+/* ナビゲーションメニューのスタイル */
+/* ======================================= */
+
+.nav-links {
+    /* 画面全体を覆うように配置 */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 17, 17, 0.95); 
+    z-index: 1005;
+
+    /* デフォルトで非表示にする */
+    transform: translateX(100%); 
+    transition: transform 0.4s ease-in-out;
+
+    /* メニューの中央寄せ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* activeクラスが付いたら表示 */
+.nav-links.active {
+    transform: translateX(0);
+}
+
+.nav-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 30px 0;
+}
+
+.nav-links a {
+    /* ▼ 修正済: Dela Gothic One フォントを適用 */
+    font-family: 'Dela Gothic One', sans-serif; 
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    padding: 10px 20px;
+}
+
+/* ======== ヘッダー動画 ======== */
+.header-video-section {
+    width: 100%;
+}
+
+.header-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* ======== RELEASE/DISCOGRAPHY ======== */
+.album-feature {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.album-art img {
+    max-width: 300px;
+    height: auto;
+}
+
+.album-details {
+    flex: 1;
+}
+
+.album-title {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.album-details p {
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+/* 「収録曲」ボックス */
+.tracklist-box {
+    background-color: var(--color-accent-yellow);
+    color: var(--color-dark-text);
+    padding: 40px 20px;
+    margin: 20px 0;
+    font-weight: bold;
+    min-height: 100px;
+}
+
+/* 「BUY NOW」ボタン */
+.buy-button {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    padding: 12px 25px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    
+}
+
+.buy-button:hover {
+    background-color: #fff;
+    color: var(--color-dark-text);
+}
+
+/* ======== LIVE ======== */
+.live-photo {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ======== DISCOGRAPHY (シングルグリッド) ======== */
+.shingl-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4列に */
+    gap: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.shingl-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ======== BIO (メンバー紹介) ======== */
+.band-photo {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.band-description {
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+/* メンバー紹介グリッド */
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4列に */
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.member-card {
+    text-align: center;
+}
+
+/* メンバー紹介の青いボックス */
+.member-photo-placeholder {
+    background-color: var(--color-accent-blue);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--color-light-text);
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* メンバーカード内のSNSアイコン */
+.social-icons a {
+    font-size: 1.5rem;
+    margin: 0 10px;
+    color: #aaa;
+}
+.social-icons a:hover {
+    color: var(--color-light-text);
+}
+
+
+/* ======== OFFICIAL LINK (ソーシャルアイコン) ======== */
+.social {
+    display: flex;
+    justify-content: center; /* アイコンを水平中央に配置 */
+    margin-top: 20px;
+    margin-bottom: 20px; 
+}
+
+.social a {
+    font-size: 1.8rem;
+    margin: 0 15px;
+    color: #aaa;
+}
+
+.social a:hover {
+    color: var(--color-light-text);
+}
+
+
+/* ======== フッター ======== */
+.footer {
+    background-color: var(--color-dark-bg);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* ======== モバイル対応 (レスポンシブデザイン) ======== */
+@media (max-width: 768px) {
+    /* DISCOGRAPHYセクションのレイアウトを縦並びに */
+    .album-feature {
+        flex-direction: column;
+    }
+
+    .album-art img {
+        max-width: 250px;
+    }
+
+    .album-details {
+        text-align: center;
+    }
+
+    /* シングルグリッドを2列に */
+    .shingl-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* モバイル時のメンバー紹介グリッドを2列に */
+    .member-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
